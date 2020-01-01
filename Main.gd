@@ -9,7 +9,10 @@ func _ready():
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	$Music.stop()
+	$DeathSound.play()
 	$HUD.show_game_over()
+
 
 func new_game():
 	score = 0
@@ -17,6 +20,7 @@ func new_game():
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready!")
+	$Music.play()
 
 func _on_StartTimer_timeout():
 	$MobTimer.start()
@@ -28,9 +32,7 @@ func _on_ScoreTimer_timeout():
 
 func _on_MobTimer_timeout():
 	# Choose random location on the Path2D
-	# documentation read:
 	$MobPath/MobSpawnLocation.set_offset(randi())
-	#$MobPath/MobSpawnLocation.offset(randi())
 	# Create mob instance and add it to the scene
 	var mob = Mob.instance()
 	add_child(mob)

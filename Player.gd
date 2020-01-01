@@ -22,16 +22,6 @@ func _input(event):
 		target = event.position
 
 func _process(delta):
-#	# Check for input and update the velocity vecotr
-#	if Input.is_action_pressed("ui_right"):
-#		velocity.x += 1
-#	if Input.is_action_pressed("ui_left"):
-#		velocity.x =- 1
-#	if Input.is_action_pressed("ui_down"):
-#		velocity.y += 1
-#	if Input.is_action_pressed("ui_up"):
-#		velocity.y -= 1
-	
 	if position.distance_to(target) > 10:
 		velocity = (target - position).normalized() * speed
 	else:
@@ -46,8 +36,6 @@ func _process(delta):
 		
 	# Move the player on the screen
 	position += velocity * delta
-#	position.x = clamp(position.x, 0, screen_size.x)
-#	position.y = clamp(position.y, 0, screen_size.y)
 	
 	# Play the correct animations
 	if velocity.x != 0:
