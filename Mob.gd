@@ -9,3 +9,6 @@ func _ready():
 
 func _on_Visibillity_screen_exited():
 	queue_free()
+
+func _on_start_game():
+	queue_free()
